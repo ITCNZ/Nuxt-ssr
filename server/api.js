@@ -1,0 +1,95 @@
+var express = require('express');
+var router = express.Router();
+var moment = require('moment');
+var request = require('request');
+// 引入模型
+var listModel = require('./db');
+
+// 解决跨域问题
+router.all('*', function(req, res, next) {
+  const url = 'http://localhost:3333' + req.url
+  req.pipe(request(url)).pipe(res.set('Access-Control-Allow-Origin', '*'));
+  next();
+});
+
+// 读取全部文章
+router.get('/api/newslist', (req, res, next) => {
+    listModel.find((err, data) => {
+
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
+
+});
+
+// 读取单个文章详情
+router.get('/api/newslist/:id', (req, res, next) => {
+  listModel.findById(req.params.id, (err, data) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
+});
+
+// 写入文章
+router.post('/api/newsedit', (req, res, next) => {
+
+    let editList = new listModel({
+        title: req.body.title,
+        author: req.body.author,
+        date: req.body.date ? req.body.date : moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
+        content: req.body.content
+    });
+
+    editList.save((err, data) => {
+
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
+
+});
+
+// 删除文章
+router.get('/api/newsdelet/:id',(req, res, next) => {
+
+    listModel.findById(req.params.id, (err, data) => {
+        data.remove((err, data) => {
+            res.send({
+                msg: '你很叼哦,请求成功了!'
+            });
+            res.end();
+        });
+    });
+
+});
+
+// 编辑文章
+router.post("/api/newsedit/:id", (req, res, next) => {
+  console.log('req.body---', req)
+    listModel.findById(req.params.id, (err, data) => {
+        data.content = req.body.content;
+        data.date = req.body.date ? req.body.date : moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+        data.author = req.body.author;
+        data.title = req.body.title;
+
+        data.save(function(err, data) {
+             if (err) {
+                 res.send(err);
+             } else {
+                 res.send(data);
+             }
+        });
+
+    });
+});
+
+
+module.exports = router;

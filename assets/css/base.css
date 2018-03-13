@@ -1,0 +1,18 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+ul {
+  list-style: none; }
+
+.container {
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px 10px 20px;
+  padding: 20px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 6px rgba(99, 99, 99, 0.4);
+  box-shadow: 0 0 6px rgba(99, 99, 99, 0.4); }
+
+/*# sourceMappingURL=base.css.map */
