@@ -2,6 +2,7 @@
 
 > Nuxt.js project
 
+
 ## 用到的技术
 
 > Vue2.0
@@ -9,6 +10,7 @@
 > Node9.8 (必须>=8.0)
 > Express
 > MongoDB
+
 
 ## 目录结构
 
@@ -39,6 +41,7 @@
 └── util                                存放一些工具文件（自己添加）
 ```
 
+
 ## 前端开发指南
 
 > 首先需要安装 >=node8.0 因为nuxt1.0.0 必须在>=node8.0的环境下才可以安装成功
@@ -48,6 +51,7 @@
 > 前端监控的是3000端口 ,执行命令 "npm run dev";
 
 
+
 ## 后端开发指南
 
 > 下载安装MongoDB, 具体详情不在此赘述,给上链接 [MongoDB](https://www.mongodb.com/download-center?jmp=nav#atlas).
@@ -55,6 +59,7 @@
 > 安装Express, 具体详情不在此赘述,给上链接 [Express](http://expressjs.com/zh-cn/4x/api.html) 
 
 > 后端监控的是3333端口, 需要,cd 到 server文件夹目录下,执行命令 "supervisor listrouter.js";
+
 
 ## 构建与运行
 
