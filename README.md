@@ -6,9 +6,13 @@
 ## 用到的技术
 
 > Vue2.0
+
 > Nuxt1.0
+
 > Node9.8 (必须>=8.0)
+
 > Express
+
 > MongoDB
 
 
