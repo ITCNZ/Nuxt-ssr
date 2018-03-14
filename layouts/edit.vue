@@ -1,22 +1,14 @@
 <template>
     <div class="edit container">
       <nuxt/>
-      <form id="saveReportForm" method="post">
-        <p>
-          <label for="title">文章标题:</label>
-          <input type="text" id="title" name="title" placeholder="文章标题" v-model="editData.title">
-        </p>
-        <p>
-          <label for="author">作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;者:</label>
-          <input type="text" id="author" name="author" placeholder="作者" v-model="editData.author">
-        </p>
-        <!--<p>-->
-          <!--<label for="content">文章内容:</label>-->
-          <!--<textarea id="content" name="content" placeholder="文章内容" v-model="editData.content"></textarea>-->
-        <!--</p>-->
-
-        <div class="quill-editor-box">
-          <label>文章内容:</label>
+      <el-form :model="editData" :rules="rules" ref="editForm" label-width="100px" class="form-edit">
+        <el-form-item label="文章标题" prop="title">
+          <el-input v-model="editData.title"></el-input>
+        </el-form-item>
+        <el-form-item label="作者" prop="author">
+          <el-input v-model="editData.author"></el-input>
+        </el-form-item>
+        <el-form-item label="文章内容" prop="content">
           <div class="quill-editor"
                :content="editData.content"
                @change="onEditorChange($event)"
@@ -25,25 +17,42 @@
                @ready="onEditorReady($event)"
                v-quill:myQuillEditor="editorOption">
           </div>
-        </div>
-        <p>
-          <input type="button" value="发表" @click="submitNews()">
-        </p>
-      </form>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitNews('editForm')">立即发表</el-button>
+          <el-button @click="resetForm('editForm')">重置</el-button>
+        </el-form-item>
+      </el-form>
     </div>
 </template>
 
 <script>
   import axios from 'axios'
   import qs from 'qs';
+  import 'quill/dist/quill.snow.css'
+  import 'quill/dist/quill.bubble.css'
+  import 'quill/dist/quill.core.css'
+  import UI from '../plugins/ui'
   export default {
     data(){
       return {
         editData: {
           title: '',
-          author:'',
-          date:'',
+          author: '',
+          date: '',
           content: ''
+        },
+        rules: {
+          title: [
+            { required: true, message: '请输入文章标题', trigger: 'blur' },
+            { min: 5, message: '长度在不得少于5个字符', trigger: 'blur' }
+          ],
+          author: [
+            { required: false, message: '请输入文章作者', trigger: 'blur' }
+          ],
+          content: [
+            { required: true, message: '请输入文章内容', trigger: 'blur' }
+          ]
         },
         editorOption: {
           // some quill options
@@ -51,12 +60,10 @@
             toolbar: [
               ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
               ['blockquote', 'code-block'],
-              [{ 'header': 1 }, { 'header': 2 }],               // custom button values
               [{ 'list': 'ordered'}, { 'list': 'bullet' }],
               [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
               [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
               [{ 'direction': 'rtl' }],                         // text direction
-              [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
               [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
               [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
               [{ 'font': [] }],
@@ -86,34 +93,50 @@
       })
     },
     methods: {
-      submitNews() {
-        if (this.$route.params.id) { // 修改,编辑
-          axios.post('http://localhost:3333/api/newsedit/' + this.$route.params.id, qs.stringify(this.editData), {
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            }
-          }).then((res) => {
-            alert('文章修改成功!')
-        }).then((res) => {
-            this.$router.push('/news')
-        }).catch (err => {
-              console.log('报错了啊')
-          })
-        } else{// 新建
-          axios.post('http://localhost:3333/api/newsedit', qs.stringify(this.editData), {
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            }
-          })
-           .then((res) => {
-            alert('发表文章成功!')
-        }).then((res) => {
-            this.$router.push('/news')
-        }).catch (err => {
-            console.log('报错了啊')
-        })
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      },
+      submitNews(formName) {
 
-        }
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+
+            if (this.$route.params.id) { // 修改,编辑
+              axios.post('http://localhost:3333/api/newsedit/' + this.$route.params.id, qs.stringify(this.editData), {
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
+              })
+              .then((res) => {
+                UI.toast('文章修改成功!', 'success')
+              }).then((res) => {
+                this.$router.push('/news')
+              }).catch (err => {
+                  UI.toast('修改文章失败!', 'error')
+              })
+            } else{// 新建
+              this.editData.author = this.editData.author ? this.editData.author : '佚名';
+              axios.post('http://localhost:3333/api/newsedit', qs.stringify(this.editData), {
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                }
+              })
+              .then((res) => {
+                UI.toast('发表文章成功!', 'success')
+              }).then((res) => {
+                console.log('成功啦----')
+                this.$router.push('/news')
+              }).catch (err => {
+                UI.toast('发表文章失败!', 'error')
+              })
+            }
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+
+
       },
 
       onEditorBlur(editor) {
@@ -126,7 +149,7 @@
         console.log('editor ready!', editor)
       },
       onEditorChange({ editor, html, text }) {
-        console.log('editor change!', editor, html, text)
+//        console.log('editor change!', editor, html, text)
         this.editData.content = html
       }
 
@@ -138,8 +161,8 @@
 </script>
 
 <style scoped>
-  .quill-editor-box{
-    max-width: 40%;
+  .form-edit{
+    max-width: 70%;
   }
   .quill-editor {
     min-height: 200px;

@@ -8,8 +8,9 @@
         <li v-for="(item, index) in datas" :key="index">
           <nuxt-link :to="`/news/${item._id}`">{{item.title}}</nuxt-link>
           <span class="caozuo">
-            <nuxt-link :to="`/edit/${item._id}`">修改</nuxt-link>
-            <button @click="deletFn(item._id)">删除</button>
+            <el-button size="mini" type="primary" @click="goFn(item._id)">查看</el-button>
+            <el-button size="mini" type="success" @click="editFn(item._id)">修改</el-button>
+            <el-button size="mini" type="danger" @click="deletFn(item._id)">删除</el-button>
           </span>
         </li>
       </ul>
@@ -19,6 +20,7 @@
 
 <script>
   import axios from 'axios'
+//  import UI from '../../plugins/ui'
   export default {
     head() {
       return {
@@ -46,11 +48,17 @@
         axios.get('http://localhost:3333/api/newsdelet/' + id)
         .then((res) => {
           alert('文章删除成功!')
-        }).then((res) => {
           location.reload()
         }).catch (err => {
             console.log('报错了啊', err)
         })
+
+      },
+      editFn(id) {
+        this.$router.push(`/edit/${id}`)
+      },
+      goFn(id) {
+        this.$router.push(`/news/${id}`)
       }
     }
   }
@@ -59,7 +67,12 @@
 <style scoped>
   li{
     overflow: hidden;
-    padding: 2px 0;
+    padding: 6px 0;
+    border-bottom: 1px solid #f7f7f7;
+    line-height: 29px;
+  }
+  li:hover{
+    background: #f7f7f7;
   }
   .caozuo{
     float: right;
@@ -68,5 +81,8 @@
     margin-left: 20px;
     font-size: 12px;
     color: #666;
+  }
+  button{
+    color: #fff;
   }
 </style>

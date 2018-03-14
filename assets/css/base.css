@@ -15,4 +15,7 @@ ul {
   -webkit-box-shadow: 0 0 6px rgba(99, 99, 99, 0.4);
   box-shadow: 0 0 6px rgba(99, 99, 99, 0.4); }
 
+h1 {
+  margin-bottom: 20px; }
+
 /*# sourceMappingURL=base.css.map */

@@ -7,10 +7,6 @@
       作者: {{datas.author}}  发表时间:{{datas.date}}
     </div>
     <div class="art-body" v-html="datas.content"></div>
-    <!--<div class="edit">-->
-    <!--<button @click="editFn">修改</button>-->
-    <!--<button @click="deletFn">删除</button>-->
-    <!--</div>-->
   </section>
 </template>
 
@@ -38,10 +34,6 @@
         }).catch (err => {
           console.log('报错了啊')
       })
-    },
-
-    created () {
-      console.log('this.$route.params.courseId', this.$route);
     }
   }
 </script>

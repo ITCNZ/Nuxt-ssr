@@ -24,7 +24,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    vendor: ['axios'],
+    vendor: ['axios', 'element-ui'],
     extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
@@ -37,14 +37,15 @@ module.exports = {
     }
   },
   plugins: [
-    { src: '~plugins/nuxt-quill-plugin.js', ssr: false }
+    { src: '~plugins/nuxt-quill-plugin.js', ssr: false },
+    { src: '~plugins/element-ui.js', ssr: true },
+    { src: '~plugins/ui.js', ssr: false }
   ],
   // some nuxt config...
   css: [
     '~assets/css/base.css',
-    'quill/dist/quill.snow.css',
-    'quill/dist/quill.bubble.css',
-    'quill/dist/quill.core.css'
+    'element-ui/lib/theme-chalk/reset.css',
+    'element-ui/lib/theme-chalk/index.css'
   ]
 
 }
