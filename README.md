@@ -1,6 +1,6 @@
 # mynuxt是一个文章增删改查系统
 
-> Nuxt.js project
+> Nuxt.js project，该项目是一个ssr结构完整的项目，适合新人练手使用，如果对您有帮助，请右上角给个star，鼓励一下，同时希望指正。
 
 
 ## 用到的技术
