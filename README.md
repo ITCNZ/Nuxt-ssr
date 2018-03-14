@@ -44,6 +44,7 @@
 ```
 # 首先需要安装 >=node8.0 因为nuxt1.0.0 必须在>=node8.0的环境下才可以安装成功
 # 富文本编辑器nuxt-quill-plugin的安装与使用 [nuxt-quill-plugin](https://github.com/surmon-china/vue-quill-editor)
+# 前端监控的是3000端口 ,执行命令 "npm run dev";
 
 ```
 
@@ -53,9 +54,10 @@
 ```
 # 下载安装MongoDB, 具体详情不在此赘述,给上链接 [MongoDB](https://www.mongodb.com/download-center?jmp=nav#atlas).
 # 安装Express, 具体详情不在此赘述,给上链接 [Express](http://expressjs.com/zh-cn/4x/api.html)
+# 后端监控的是3333端口, 需要,cd 到 server文件夹目录下,执行命令 "supervisor listrouter.js";
 ```
 
-## 构建运行
+## 构建与运行
 
 ``` bash
 # install dependencies
