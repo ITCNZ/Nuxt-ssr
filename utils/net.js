@@ -3,10 +3,7 @@ import axios from 'axios'
 import qs from 'qs';
 
 var Net = {
-
-  asyncJSON: function () {
-
-  },
+  
   getJSON: function (url, params, config) {
     return new Promise(function(resolve, reject){
 

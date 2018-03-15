@@ -52,6 +52,8 @@
 
 > 首先需要安装 >=node8.0 因为nuxt1.0.0 必须在>=node8.0的环境下才可以安装成功
 
+> 安装element-ui, 安装放发页面[这个页面](http://element.eleme.io/#/zh-CN/component/quickstart)下面有比较详细的demo,可参考
+
 > 富文本编辑器nuxt-quill-plugin的安装与使用 [nuxt-quill-plugin](https://github.com/surmon-china/vue-quill-editor)
 
 > （划重点，因为本地前后端检测同一个接口无法实现，所以与下面的后端端口不同）前端监控的是3000端口 ,执行命令 "npm run dev";
