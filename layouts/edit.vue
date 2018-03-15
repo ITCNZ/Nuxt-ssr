@@ -162,7 +162,7 @@
 
 <style scoped>
   .form-edit{
-    max-width: 70%;
+    max-width: 72%;
   }
   .quill-editor {
     min-height: 200px;
