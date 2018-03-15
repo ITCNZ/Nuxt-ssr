@@ -39,7 +39,7 @@ module.exports = {
   plugins: [
     { src: '~plugins/nuxt-quill-plugin.js', ssr: false },
     { src: '~plugins/element-ui.js', ssr: true },
-    { src: '~plugins/ui.js', ssr: false }
+    { src: '~plugins/util.js', ssr: false }
   ],
   // some nuxt config...
   css: [

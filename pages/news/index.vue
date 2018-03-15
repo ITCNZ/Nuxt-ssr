@@ -43,14 +43,19 @@
           console.log('报错了啊')
       })
     },
+
     methods: {
       deletFn(id) {
-        axios.get('http://localhost:3333/api/newsdelet/' + id)
-        .then((res) => {
-          alert('文章删除成功!')
-          location.reload()
-        }).catch (err => {
-            console.log('报错了啊', err)
+        Util.UI.confirm('确定删除改篇文章吗?').then(() => {
+          Util.Net.getJSON('http://localhost:3333/api/newsdelet/' + id) // 此处使用的是自己封装的请求插件
+          .then(res => {
+            Util.UI.toast('文章删除成功!', 'success')
+            setTimeout(() => {
+              this.$router.go(0)
+            }, 600)
+          })
+        }, () => {
+          console.log('取消了')
         })
 
       },

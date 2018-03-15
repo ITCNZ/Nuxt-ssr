@@ -32,7 +32,6 @@
   import 'quill/dist/quill.snow.css'
   import 'quill/dist/quill.bubble.css'
   import 'quill/dist/quill.core.css'
-  import UI from '../plugins/ui'
   export default {
     data(){
       return {
@@ -75,22 +74,17 @@
 
       }
     },
-    created () {
+    beforeMount () {
       if (!this.$route.params.id) return;
-      axios.get('http://localhost:3333/api/newslist/' + this.$route.params.id, {
-        proxy: {
-          host: '127.0.0.1',
-          port: 3000
-        }
-      })
-      .then((res) => {
-        this.editData.title = res.data.title;
-        this.editData.author = res.data.author;
-        this.editData.date = res.data.date;
-        this.editData.content = res.data.content;
-      }).catch (err => {
-          console.log('报错了啊')
-      })
+      Util.Net.getJSON('http://localhost:3333/api/newslist/' + this.$route.params.id, {}) // 此处使用的是自己封装的请求插件
+        .then(res => {
+          this.editData.title = res.data.title;
+          this.editData.author = res.data.author;
+          this.editData.date = res.data.date;
+          this.editData.content = res.data.content;
+        }, err => {
+          console.log('报错啦', err)
+        })
     },
     methods: {
       resetForm(formName) {
@@ -108,11 +102,11 @@
                 }
               })
               .then((res) => {
-                UI.toast('文章修改成功!', 'success')
+                Util.UI.toast('文章修改成功!', 'success')
               }).then((res) => {
                 this.$router.push('/news')
               }).catch (err => {
-                  UI.toast('修改文章失败!', 'error')
+                Util.UI.toast('修改文章失败!', 'error')
               })
             } else{// 新建
               this.editData.author = this.editData.author ? this.editData.author : '佚名';
@@ -122,12 +116,12 @@
                 }
               })
               .then((res) => {
-                UI.toast('发表文章成功!', 'success')
+                Util.UI.toast('发表文章成功!', 'success')
               }).then((res) => {
                 console.log('成功啦----')
                 this.$router.push('/news')
               }).catch (err => {
-                UI.toast('发表文章失败!', 'error')
+                Util.UI.toast('发表文章失败!', 'error')
               })
             }
           } else {
