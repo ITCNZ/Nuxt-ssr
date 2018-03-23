@@ -6,23 +6,27 @@ var request = require('request');
 var listModel = require('./db');
 
 // 解决跨域问题
-router.all('*', function(req, res, next) {
+router.all('*', (req, res, next) => {
   const url = 'http://localhost:3333' + req.url
-  req.pipe(request(url)).pipe(res.set('Access-Control-Allow-Origin', '*'));
+  // req.pipe(request(url)).pipe(res.set('Access-Control-Allow-Origin', '*'));
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+  res.header("X-Powered-By",' 3.2.1')
+  res.header("Content-Type", "application/json;charset=utf-8");
   next();
 });
 
 // 读取全部文章
 router.get('/api/newslist', (req, res, next) => {
     listModel.find((err, data) => {
-
         if (err) {
             res.send(err);
         } else {
             res.send(data);
         }
-    });
 
+    });
 });
 
 // 读取单个文章详情
@@ -73,7 +77,6 @@ router.get('/api/newsdelet/:id',(req, res, next) => {
 
 // 编辑文章
 router.post("/api/newsedit/:id", (req, res, next) => {
-  console.log('req.body---', req)
     listModel.findById(req.params.id, (err, data) => {
         data.content = req.body.content;
         data.date = req.body.date ? req.body.date : moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');

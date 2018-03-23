@@ -43,7 +43,7 @@ module.exports = {
   ],
   // some nuxt config...
   css: [
-    '~assets/css/base.css',
+    '~assets/css/base.scss',
     'element-ui/lib/theme-chalk/reset.css',
     'element-ui/lib/theme-chalk/index.css'
   ]
