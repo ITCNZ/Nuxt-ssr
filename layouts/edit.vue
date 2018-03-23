@@ -154,7 +154,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .form-edit{
     max-width: 72%;
   }

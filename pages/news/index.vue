@@ -69,25 +69,27 @@
   }
 </script>
 
-<style scoped>
-  li{
+<style scoped lang="scss">
+  li {
     overflow: hidden;
     padding: 6px 0;
     border-bottom: 1px solid #f7f7f7;
     line-height: 29px;
-  }
-  li:hover{
-    background: #f7f7f7;
+    &:hover {
+      background: #f7f7f7;
+    }
   }
   .caozuo{
     float: right;
-  }
-  .caozuo a,button{
-    margin-left: 20px;
-    font-size: 12px;
-    color: #666;
-  }
-  button{
-    color: #fff;
+    a{
+      margin-left: 20px;
+      font-size: 12px;
+      color: #666;
+    }
+    button{
+      margin-left: 20px;
+      font-size: 12px;
+      color: #fff;
+    }
   }
 </style>

@@ -38,7 +38,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   h1,.about {
     text-align: center;
     margin-bottom: 15px;
