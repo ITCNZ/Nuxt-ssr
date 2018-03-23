@@ -7,7 +7,7 @@ var listModel = require('./db');
 
 // 解决跨域问题
 router.all('*', (req, res, next) => {
-  const url = 'http://localhost:3333' + req.url
+  // const url = 'http://localhost:3333' + req.url
   // req.pipe(request(url)).pipe(res.set('Access-Control-Allow-Origin', '*'));
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
