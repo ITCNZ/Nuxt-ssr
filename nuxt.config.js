@@ -36,13 +36,13 @@ module.exports = {
       }
     }
   },
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy'
-  ],
-  proxy: [ // 设置代理
-    ['/api', { target: 'http://localhost:3333' }]
-  ],
+  // modules: [
+  //   '@nuxtjs/axios',
+  //   '@nuxtjs/proxy'
+  // ],
+  // proxy: [ // 设置代理
+  //   ['/api', { target: 'http://localhost:3333' }]
+  // ],
   plugins: [
     { src: '~plugins/nuxt-quill-plugin.js', ssr: false },
     { src: '~plugins/element-ui.js', ssr: true },

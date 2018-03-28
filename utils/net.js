@@ -3,7 +3,7 @@ import axios from 'axios'
 import qs from 'qs';
 
 var Net = {
-  
+
   getJSON: function (url, params, config) {
     return new Promise(function(resolve, reject){
 
@@ -17,13 +17,14 @@ var Net = {
         })
     });
   },
+
   postJSON: function (url, params, data, config) {
 
     var i = 0;
     var isHasPraram;
 
     //检测url
-    if (url.indexOf("?") != -1){
+    if (url.indexOf("?") != -1) {
       isHasPraram = true;
     }
 

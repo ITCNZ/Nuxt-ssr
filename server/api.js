@@ -28,7 +28,7 @@ router.get('/api/newslist', (req, res, next) => {
 });
 
 // 读取单个文章详情
-router.get('/api/newslist/:id', (req, res, next) => {
+router.get('/api/newsone/:id', (req, res, next) => {
   listModel.findById(req.params.id, (err, data) => {
         if (err) {
             res.send(err);

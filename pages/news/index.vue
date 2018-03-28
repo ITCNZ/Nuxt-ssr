@@ -19,8 +19,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
-//  import UI from '../../plugins/ui'
+  import Api from '../../utils/api'
   export default {
     head() {
       return {
@@ -36,7 +35,7 @@
       }
     },
     asyncData ({ params, error }) {
-      return axios.get('http://localhost:3333/api/newslist')
+      return Api.newslist()
       .then((res) => {
         return { datas: res.data }
       }).catch (err => {
@@ -47,7 +46,7 @@
     methods: {
       deletFn(id) {
         Util.UI.confirm('确定删除改篇文章吗?').then(() => {
-          Util.Net.getJSON('/api/newsdelet/' + id) // 此处使用的是自己封装的请求插件
+          Api.newsDelet(id)
           .then(res => {
             Util.UI.toast('文章删除成功!', 'success')
             setTimeout(() => {

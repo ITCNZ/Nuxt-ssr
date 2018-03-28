@@ -27,8 +27,8 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import qs from 'qs';
+  import Api from '../utils/api'
   import 'quill/dist/quill.snow.css'
   import 'quill/dist/quill.bubble.css'
   import 'quill/dist/quill.core.css'
@@ -76,7 +76,7 @@
     },
     beforeMount () {
       if (!this.$route.params.id) return;
-      Util.Net.getJSON('/api/newslist/' + this.$route.params.id) // 此处使用的是自己封装的请求插件
+      Api.newsOne(this.$route.params.id)
         .then(res => {
           this.editData.title = res.data.title;
           this.editData.author = res.data.author;
@@ -96,23 +96,23 @@
           if (valid) {
 
             if (this.$route.params.id) { // 修改,编辑
-              axios.post('/api/newsedit/' + this.$route.params.id, qs.stringify(this.editData))
+              Api.reEdit(this.$route.params.id, this.editData)
               .then((res) => {
                 Util.UI.toast('文章修改成功!', 'success')
               }).then((res) => {
                 this.$router.push('/news')
-              }).catch (err => {
-                Util.UI.toast('修改文章失败!', 'error')
+              }, err => {
+                 Util.UI.toast('修改文章失败!', 'error')
               })
             } else{// 新建
               this.editData.author = this.editData.author ? this.editData.author : '佚名';
-              axios.post('/api/newsedit', qs.stringify(this.editData))
+              Api.newsEdit(this.editData)
               .then((res) => {
                 Util.UI.toast('发表文章成功!', 'success')
               }).then((res) => {
                 console.log('成功啦----')
                 this.$router.push('/news')
-              }).catch (err => {
+              }, err => {
                 Util.UI.toast('发表文章失败!', 'error')
               })
             }
@@ -121,7 +121,6 @@
             return false;
           }
         });
-
 
       },
 

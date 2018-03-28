@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import Api from '../../utils/api'
   export default {
     head() {
       return {
@@ -28,7 +28,7 @@
       }
     },
     asyncData ({ params, error }) {
-      return axios.get('http://localhost:3333/api/newslist/' + params.id)
+      return Api.newsOne(params.id)
           .then((res) => {
           return { datas: res.data }
         }).catch (err => {
