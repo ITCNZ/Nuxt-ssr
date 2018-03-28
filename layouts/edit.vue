@@ -76,7 +76,7 @@
     },
     beforeMount () {
       if (!this.$route.params.id) return;
-      Util.Net.getJSON('http://localhost:3333/api/newslist/' + this.$route.params.id) // 此处使用的是自己封装的请求插件
+      Util.Net.getJSON('/api/newslist/' + this.$route.params.id) // 此处使用的是自己封装的请求插件
         .then(res => {
           this.editData.title = res.data.title;
           this.editData.author = res.data.author;
@@ -96,7 +96,7 @@
           if (valid) {
 
             if (this.$route.params.id) { // 修改,编辑
-              axios.post('http://localhost:3333/api/newsedit/' + this.$route.params.id, qs.stringify(this.editData))
+              axios.post('/api/newsedit/' + this.$route.params.id, qs.stringify(this.editData))
               .then((res) => {
                 Util.UI.toast('文章修改成功!', 'success')
               }).then((res) => {
@@ -106,7 +106,7 @@
               })
             } else{// 新建
               this.editData.author = this.editData.author ? this.editData.author : '佚名';
-              axios.post('http://localhost:3333/api/newsedit', qs.stringify(this.editData))
+              axios.post('/api/newsedit', qs.stringify(this.editData))
               .then((res) => {
                 Util.UI.toast('发表文章成功!', 'success')
               }).then((res) => {

@@ -26,6 +26,8 @@
     "vue-quill-editor": "^3.0.5"
   },
   "devDependencies": {
+    "@nuxtjs/axios": "^5.1.1",
+    "@nuxtjs/proxy": "^1.1.4",
     "babel-eslint": "^8.2.1",
     "eslint": "^4.15.0",
     "eslint-friendly-formatter": "^3.0.0",
