@@ -31,6 +31,7 @@
 │   ├── ....
 ├── middleware                          存放应用的中间件
 │   ├── server.js                       检测网络环境
+│   ├── ...
 ├── node_modules                        Node依赖文件
 ├── nuxt.config.js                      Nuxt主配置文件
 ├── pages                               存放页面的目录
