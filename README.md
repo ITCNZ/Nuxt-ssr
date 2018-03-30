@@ -71,7 +71,7 @@
 
 > 安装Express, 具体详情不在此赘述,给上链接 [Express](http://expressjs.com/zh-cn/4x/api.html) .
 
-> 安装supervisor 实时监控，可以进行全局，也可只安装在本项目中。全局安装方法：npm install -g supervisor.
+> 安装supervisor 实时监控，可以进行全局，也可只安装在本项目中。全局安装方法：sudo npm install -g supervisor.
 
 > （划重点，因为本地前后端检测同一个接口无法实现，所以与上面的前端端口不同）后端监控的是3333端口, 需要,cd 到 server文件夹目录下,执行命令 "supervisor listrouter.js";
 
