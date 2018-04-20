@@ -93,32 +93,13 @@ router.post("/api/newsedit/:id", (req, res, next) => {
 });
 
 
-// 登录、登出操作
-const session = require('express-session')
-
-// Sessions 来创建 req.session
-router.use(session({
-  secret: 'super-secret-key',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge: 60000 }
-}))
-
-// 发起 POST /api/login 请求完成用户登录，并添加该用户到 req.session.authUser
+// 登录操作
 router.post('/api/login', function (req, res) {
-  if (req.body.userName === 'demo' && req.body.passWord === 'demo') {
-    req.session.authUser = { userName: 'demo' }
-    return res.json({ userName: 'demo' })
+  if (req.body.userName === 'Vuer' && req.body.passWord === '123456') {
+    return res.json({ userName: req.body.userName })
   }
   res.status(401).json({ error: '账号或密码不正确!' })
 })
-
-// 发起 POST /api/logout 请求注销当前用户，并从 req.session 中移除
-router.post('/api/logout', function (req, res) {
-  delete req.session.authUser
-  res.json({ ok: true })
-})
-
 
 
 module.exports = router;

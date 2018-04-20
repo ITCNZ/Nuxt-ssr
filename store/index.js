@@ -30,7 +30,6 @@ export const actions = {
   },
 
   async logout({ commit }) {
-    await Api.logout()
     Cookie.remove('authUser')
   }
 
