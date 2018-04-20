@@ -14,10 +14,10 @@
             <el-button type="primary" @click="login('ruleForm2')">提交</el-button>
             <el-button @click="resetForm('ruleForm2')">重置</el-button>
           </el-form-item>
+          <p class="username_pass">测试账号: Vuer 密码: 123456</p>
         </el-form>
       </div>
     </div>
-    <p class="username_pass">测试账号: Vuer 密码: 123456</p>
   </section>
 </template>
 
@@ -76,6 +76,11 @@
       left: 50%;
       top:50%;
       min-height: 300px;
+    }
+    .username_pass{
+      font-size: 12px;
+      color: #999;
+      text-align: center;
     }
   }
   footer{
