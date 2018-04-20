@@ -17,6 +17,7 @@
         </el-form>
       </div>
     </div>
+    <p class="username_pass">测试账号: Vuer 密码: 123456</p>
   </section>
 </template>
 
