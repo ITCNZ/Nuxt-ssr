@@ -43,6 +43,20 @@ export default class  {
     return Net.getJSON(Checkenv.url.api + "/newsone/" + Id);
   }
 
+  /**
+   * 登录页面
+   */
+  static login(data){
+    return Net.postJSON(Checkenv.url.api + "/login", {}, data);
+  }
+
+  /**
+   * 登出页面
+   */
+  static logout(){
+    return Net.postJSON(Checkenv.url.api + "/logout");
+  }
+
 
 
 }

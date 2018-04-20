@@ -13,6 +13,7 @@
 <script>
   import Api from '../../utils/api'
   export default {
+    middleware: 'auth',
     head() {
       return {
         title: this.datas.title,

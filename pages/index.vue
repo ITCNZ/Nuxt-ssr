@@ -21,6 +21,7 @@
 import AppLogo from '~/components/AppLogo.vue'
 
 export default {
+  middleware: 'auth',
   head() {
     return {
       title: '这是一个测试Title',

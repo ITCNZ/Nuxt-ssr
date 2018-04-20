@@ -1,3 +1,4 @@
+
 module.exports = {
   /*
   ** Headers of the page
@@ -53,6 +54,9 @@ module.exports = {
     '~assets/css/base.scss',
     'element-ui/lib/theme-chalk/reset.css',
     'element-ui/lib/theme-chalk/index.css'
-  ]
+  ],
+  // router: {
+  //   middleware: 'chekRouter'
+  // }
 
 }

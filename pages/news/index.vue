@@ -45,7 +45,7 @@
 
     methods: {
       deletFn(id) {
-        Util.UI.confirm('确定删除改篇文章吗?').then(() => {
+        Util.UI.confirm('确定删除这篇文章吗?').then(() => {
           Api.newsDelet(id)
           .then(res => {
             Util.UI.toast('文章删除成功!', 'success')

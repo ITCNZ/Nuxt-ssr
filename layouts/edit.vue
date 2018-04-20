@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <my-header></my-header>
     <div class="edit container">
       <nuxt/>
       <el-form :model="editData" :rules="rules" ref="editForm" label-width="100px" class="form-edit">
@@ -24,6 +26,8 @@
         </el-form-item>
       </el-form>
     </div>
+    <my-footer></my-footer>
+  </div>
 </template>
 
 <script>
@@ -32,6 +36,8 @@
   import 'quill/dist/quill.snow.css'
   import 'quill/dist/quill.bubble.css'
   import 'quill/dist/quill.core.css'
+  import MyHeader from '~/components/Header'
+  import MyFooter from '~/components/Footer'
   export default {
     data(){
       return {
@@ -140,8 +146,9 @@
 
     },
     components: {
-
-    }
+      MyFooter,
+      MyHeader
+    },
   }
 </script>
 
