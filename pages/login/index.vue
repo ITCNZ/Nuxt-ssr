@@ -48,7 +48,7 @@
           Util.UI.toast('登录成功!', 'success')
           this.$router.push(`/`)
         } catch (e) {
-          this.formError = e.message
+          Util.UI.toast('账号或密码错误!', 'error')
         }
       },
 

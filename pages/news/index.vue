@@ -21,6 +21,7 @@
 <script>
   import Api from '../../utils/api'
   export default {
+    middleware: 'auth',
     head() {
       return {
         title: '这是文章的列表页面',
