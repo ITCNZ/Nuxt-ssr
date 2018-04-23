@@ -46,27 +46,4 @@ export default function ({ route, req, res, redirect, error, store }) {
     redirect(redirectURL)
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
