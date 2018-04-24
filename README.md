@@ -32,7 +32,7 @@
 │   ├── edit                            编辑/创建文章模板
 │   ├── ....
 ├── middleware                          存放应用的中间件
-│   ├── server.js                       检测网络环境
+│   ├── auth.js                         路由是否登录拦截
 │   ├── ...
 ├── node_modules                        Node依赖文件
 ├── nuxt.config.js                      Nuxt主配置文件
