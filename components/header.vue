@@ -51,7 +51,6 @@
      watch: {
        '$route' (to, from) {
          //刷新参数放到这里里面去触发就可以刷新相同界面了
-         console.log('to', to)
          to.path == '/login' ? this.isLogin = true : this.isLogin = false;
          let authUser = Cookie.get('authUser') ? JSON.parse(Cookie.get('authUser')) : '';
          this.userName = authUser.userName;

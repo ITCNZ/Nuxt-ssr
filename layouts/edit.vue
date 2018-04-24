@@ -31,8 +31,7 @@
 </template>
 
 <script>
-  import qs from 'qs';
-  import Api from '../utils/api'
+  import Api from '~/utils/api'
   import 'quill/dist/quill.snow.css'
   import 'quill/dist/quill.bubble.css'
   import 'quill/dist/quill.core.css'

@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import Api from '../../utils/api'
+  import Api from '~/utils/api'
   export default {
     middleware: 'auth',
     head() {

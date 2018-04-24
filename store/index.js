@@ -1,4 +1,4 @@
-import Api from '../utils/api'
+import Api from '~/utils/api'
 import Cookie from 'js-cookie'
 
 export const state = () => ({
@@ -13,9 +13,9 @@ export const mutations = {
 
 export const actions = {
 
-  isLoginFn(state) {
-    state.isLogin = true
-  },
+  // isLoginFn(state) {
+  //   state.isLogin = true
+  // },
 
   async login({ commit }, opts) {
     try {

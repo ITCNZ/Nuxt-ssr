@@ -22,7 +22,6 @@
 </template>
 
 <script>
-  import Api from '../../utils/api'
   export default {
     head() {
       return {
@@ -40,7 +39,6 @@
         }
       }
     },
-
     methods: {
       async login() {
         try {

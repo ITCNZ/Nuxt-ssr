@@ -1,6 +1,5 @@
 import { Message, MessageBox} from 'element-ui'
 
-
 var UI = {
   toast : function(message,type){
     let option = {

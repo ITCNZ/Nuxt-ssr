@@ -49,7 +49,7 @@ module.exports = {
     { src: '~plugins/element-ui.js', ssr: true },
     { src: '~plugins/util.js', ssr: false }
   ],
-  // some nuxt config...
+
   css: [
     '~assets/css/base.scss',
     'element-ui/lib/theme-chalk/reset.css',

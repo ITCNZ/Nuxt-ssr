@@ -2,7 +2,7 @@
  * 封装前端接口
  */
 
-import Checkenv from "../middleware/checkenv";
+import Checkenv from "./checkenv";
 import Net from "./net";
 
 
