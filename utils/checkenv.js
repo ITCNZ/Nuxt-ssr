@@ -42,6 +42,7 @@ var checkCurrentEnv = function (localEnv, rt) {
     if(envTemp == "localhost") {
       SERVER.url[obj] = "http://localhost"+port+ SERVER.url[obj];
      // SERVER.url[obj] = "http://39.107.246.220:3333"+ SERVER.url[obj];
+     // SERVER.url[obj] = "http://47.104.245.86:3333"+ SERVER.url[obj];
     } else {
       SERVER.url[obj] = "http://" +envTemp+ "itcnz.top"+port+ SERVER.url[obj];
     }
