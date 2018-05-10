@@ -1,4 +1,4 @@
-import Api from '~/utils/api'
+// import Api from '~/utils/api'
 import Cookie from 'js-cookie'
 
 export const state = () => ({
@@ -17,17 +17,17 @@ export const actions = {
   //   state.isLogin = true
   // },
 
-  async login({ commit }, opts) {
-    try {
-      const { data } = await Api.login(opts)
-      Cookie.set('authUser', data)
-    } catch (error) {
-      if (error.response && error.response.status === 401) {
-        throw new Error('Bad credentials')
-      }
-      throw error
-    }
-  },
+  // async login({ commit }, opts) {
+  //   try {
+  //     const { data } = await Api.login(opts)
+  //     Cookie.set('authUser', data)
+  //   } catch (error) {
+  //     if (error.response && error.response.status === 401) {
+  //       throw new Error('Bad credentials')
+  //     }
+  //     throw error
+  //   }
+  // },
 
   async logout({ commit }) {
     Cookie.remove('authUser')

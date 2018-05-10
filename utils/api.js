@@ -58,5 +58,20 @@ export default class  {
   }
 
 
+  /**
+   * 急眼1
+   */
+  static JiyanSlide(){
+    return Net.getJSON(Checkenv.url.api + "/gt/register-slide?t=" + (new Date()).getTime());
+  }
+
+  /**
+   * 急眼2
+   */
+    static JiyanValidate(data){
+    return Net.postJSON(Checkenv.url.api + "/gt/validate-slide", {}, data);
+  }
+
+
 
 }

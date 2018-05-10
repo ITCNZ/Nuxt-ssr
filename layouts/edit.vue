@@ -37,12 +37,15 @@
   import 'quill/dist/quill.core.css'
   import MyHeader from '~/components/Header'
   import MyFooter from '~/components/Footer'
+  import Cookie from 'js-cookie'
+
+  let authUser =  eval('(' + Cookie.get('authUser') + ')');
   export default {
     data(){
       return {
         editData: {
           title: '',
-          author: '',
+          author: authUser ? authUser.userName : '',
           date: '',
           content: ''
         },
