@@ -37,7 +37,8 @@
           { hid: 'description', name: 'description', content: 'login页面....' }
         ],
         script: [
-          { src: 'gt.js', type: 'text/javascript' }
+          { src: 'gt.js', type: 'text/javascript' } // 本地静态资源可用次,线上无法读取改地址,建议换成下面
+//          { src: 'http://static.geetest.com/static/tools/gt.js', type: 'text/javascript' }
         ]
       }
     },
