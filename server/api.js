@@ -25,14 +25,14 @@ router.all('*', (req, res, next) => {
   next();
 });
 
-// 读取分页文章
+// 分页读取文章列表
 router.post('/api/newslist', (req, res, next) => {
   var reqBody = req.body;
   if (reqBody.pageIndex == null) {
     reqBody.pageIndex = 1;
   }
   if (reqBody.pagesize == null) {
-    reqBody.pagesize = 3;
+    reqBody.pagesize = 5;
   }
 
   var resDatas = {
@@ -41,18 +41,37 @@ router.post('/api/newslist', (req, res, next) => {
     pagesize: parseInt(reqBody.pagesize)
   }
 
-  listModel.find((err, data) => {
-      if (err) {
-          res.send(err);
-      } else {
-        var data = data.reverse()
-        resDatas.records = data.length;
-        resDatas.total = Math.ceil(data.length/resDatas.pagesize)
-        var currentData = data.slice((resDatas.pageIndex-1) * resDatas.pagesize, resDatas.pageIndex * resDatas.pagesize);
-        resDatas.rows = currentData;
+
+  // 方法一, 此方法查询参数条件下的数据并返回
+  listModel.count().then(count => {
+    resDatas.records = count; // 数据条数
+    resDatas.total = Math.ceil(count/resDatas.pagesize); // 总页数
+
+    if (resDatas.pageIndex > resDatas.total) resDatas.pageIndex = resDatas.total;
+    var limit = resDatas.pagesize;
+    var skip = (resDatas.pageIndex - 1) * resDatas.pagesize;
+
+    listModel.find().sort({_id: -1}).limit(limit).skip(skip)
+      .then((data) => {
+        resDatas.rows = data; // 数据包
         res.send(resDatas);
-      }
+      })
   });
+
+  // 方法二, 此方式查询所有数据再根据分页参数返回对应的数据,超级慢
+  // listModel.find((err, data) => {
+  //     if (err) {
+  //         res.send(err);
+  //     } else {
+  //       console.log('data---', data)
+  //       var data = data.reverse()
+  //       resDatas.records = data.length;
+  //       resDatas.total = Math.ceil(data.length/resDatas.pagesize)
+  //       var currentData = data.slice((resDatas.pageIndex-1) * resDatas.pagesize, resDatas.pageIndex * resDatas.pagesize);
+  //       resDatas.rows = currentData;
+  //       res.send(resDatas);
+  //     }
+  // });
 });
 
 // 读取单个文章详情
