@@ -102,24 +102,23 @@
 
         this.$refs[formName].validate((valid) => {
           if (valid) {
-
+            this.editData.author = this.editData.author ? this.editData.author : '佚名';
             if (this.$route.params.id) { // 修改,编辑
               Api.reEdit(this.$route.params.id, this.editData)
               .then((res) => {
                 Util.UI.toast('文章修改成功!', 'success')
               }).then((res) => {
-                this.$router.push('/news')
+                this.$router.push('/news/list/1')
               }, err => {
                  Util.UI.toast('修改文章失败!', 'error')
               })
             } else{// 新建
-              this.editData.author = this.editData.author ? this.editData.author : '佚名';
+
               Api.newsEdit(this.editData)
               .then((res) => {
                 Util.UI.toast('发表文章成功!', 'success')
               }).then((res) => {
-                console.log('成功啦----')
-                this.$router.push('/news')
+                this.$router.push('/news/list/1')
               }, err => {
                 Util.UI.toast('发表文章失败!', 'error')
               })

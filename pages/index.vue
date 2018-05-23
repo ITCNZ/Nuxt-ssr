@@ -10,7 +10,7 @@
           href="/edit"
           class="button--green">发表文章</a>
         <a
-          href="/news"
+          href="/news/list/1"
           class="button--grey">查看文章</a>
       </div>
     </div>

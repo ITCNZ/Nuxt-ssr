@@ -13,7 +13,6 @@ router.use(session({
   saveUninitialized: true
 }));
 
-var Geetest = require('gt3-sdk');
 var slide = require('./slide');
 
 // CORS解决跨域问题
@@ -26,16 +25,34 @@ router.all('*', (req, res, next) => {
   next();
 });
 
-// 读取全部文章
-router.get('/api/newslist', (req, res, next) => {
-    listModel.find((err, data) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.send(data);
-        }
+// 读取分页文章
+router.post('/api/newslist', (req, res, next) => {
+  var reqBody = req.body;
+  if (reqBody.pageIndex == null) {
+    reqBody.pageIndex = 1;
+  }
+  if (reqBody.pagesize == null) {
+    reqBody.pagesize = 3;
+  }
 
-    });
+  var resDatas = {
+    msg: '请求成功',
+    pageIndex: parseInt(reqBody.pageIndex),
+    pagesize: parseInt(reqBody.pagesize)
+  }
+
+  listModel.find((err, data) => {
+      if (err) {
+          res.send(err);
+      } else {
+        var data = data.reverse()
+        resDatas.records = data.length;
+        resDatas.total = Math.ceil(data.length/resDatas.pagesize)
+        var currentData = data.slice((resDatas.pageIndex-1) * resDatas.pagesize, resDatas.pageIndex * resDatas.pagesize);
+        resDatas.rows = currentData;
+        res.send(resDatas);
+      }
+  });
 });
 
 // 读取单个文章详情

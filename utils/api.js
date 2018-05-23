@@ -11,8 +11,8 @@ export default class  {
   /**
    * 文章列表
    */
-  static newslist(){
-    return Net.getJSON(Checkenv.url.api + "/newslist/");
+  static newslist(pageIndex,pagesize){
+    return Net.postJSON(Checkenv.url.api + "/newslist/", {}, {pageIndex: pageIndex, pagesize: pagesize});
   }
 
   /**

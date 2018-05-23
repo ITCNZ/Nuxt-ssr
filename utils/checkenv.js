@@ -37,11 +37,11 @@ var checkCurrentEnv = function (localEnv, rt) {
   for (var obj in SERVER.url) {
     var envTemp = env == "" ? "" : env == "localhost" ? "localhost" : (env + ".");
     // port = envTemp != '' ? '' : ":3333";
-    port = ":3333";
+    port = ":3000";
     //服务地址
     if(envTemp == "localhost") {
       SERVER.url[obj] = "http://localhost"+port+ SERVER.url[obj];
-     // SERVER.url[obj] = "http://47.104.245.86:3333"+ SERVER.url[obj];
+     // SERVER.url[obj] = "http://47.104.245.86:3000"+ SERVER.url[obj];
     } else {
       SERVER.url[obj] = "http://" +envTemp+ "itcnz.top"+port+ SERVER.url[obj];
     }

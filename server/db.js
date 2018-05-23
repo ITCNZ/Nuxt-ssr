@@ -10,13 +10,13 @@ db.once('open',() => console.log('mongodb 连接成功!'));
 
 // 创建对象定义集合结构类型(其实就是表结构)
 var testSchema = new mongoose.Schema({
-    title:String,
-    author:String,
-    date: {
-        type: String,
-        default: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')
-    },
-    content:String
+  title:String,
+  author:String,
+  date: {
+    type: String,
+    default: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')
+  },
+  content:String
 });
 
 //列表
