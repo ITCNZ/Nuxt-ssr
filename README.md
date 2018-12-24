@@ -63,7 +63,7 @@
 
 > 富文本编辑器nuxt-quill-plugin的安装与使用 [nuxt-quill-plugin](https://github.com/surmon-china/vue-quill-editor).
 
-> （划重点，因为本地前后端检测同一个接口无法实现，所以与下面的后端端口不同）前端监控的是3000端口 ,执行命令 "npm run dev";
+> （划重点，因为本地前后端检测同一个接口无法实现，所以与下面的后端端口不同）前端监控的是3389端口 ,执行命令 "npm run dev";
 
 
 
@@ -75,7 +75,7 @@
 
 > 安装supervisor 实时监控，可以进行全局，也可只安装在本项目中。全局安装方法：sudo npm install -g supervisor.
 
-> （划重点，因为本地前后端检测同一个接口无法实现，所以与上面的前端端口不同）后端监控的是3333端口, 需要,cd 到 server文件夹目录下,执行命令 "supervisor listrouter.js";
+> （划重点，因为本地前后端检测同一个接口无法实现，所以与上面的前端端口不同）后端监控的是3000端口, 需要,cd 到 server文件夹目录下,执行命令 "supervisor listrouter.js";
 
 
 ## 阿里云部署
