@@ -78,7 +78,7 @@
 
 ## 阿里云部署
 
-> 具体部署步骤不在此详解，具体可看[详细教程](https://www.itcnz.top/20180418/%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2nuxt%E9%A1%B9%E7%9B%AE.html)
+> 具体部署步骤不在此详解，具体可看[详细教程](https://itcnz.github.io/20180418/%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2nuxt%E9%A1%B9%E7%9B%AE.html)
 
 
 ## 构建与运行
