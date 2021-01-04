@@ -19,7 +19,7 @@
     }
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "cookie-parser": "^1.4.3",
     "element-ui": "^2.2.1",
     "express": "^4.15.5",
