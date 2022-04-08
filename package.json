@@ -41,7 +41,7 @@
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^4.0.0",
-    "moment": "^2.18.1",
+    "moment": "^2.29.2",
     "node-sass": "^4.10.0",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
